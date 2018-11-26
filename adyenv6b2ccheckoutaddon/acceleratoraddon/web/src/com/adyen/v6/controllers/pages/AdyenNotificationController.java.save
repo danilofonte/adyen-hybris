@@ -78,7 +78,8 @@ public class AdyenNotificationController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/test")
+    @RequestMapping(value = "/test"o
+)
     public String test() {
 
 	LOG.error("passou aqui");

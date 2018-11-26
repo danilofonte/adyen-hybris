@@ -38,7 +38,10 @@ public class AdyenNotificationAuthenticationProvider {
     private static final Logger LOG = Logger.getLogger(AdyenNotificationAuthenticationProvider.class);
 
     public boolean authenticateBasic(final HttpServletRequest request) {
+
         final String authorization = request.getHeader("Authorization");
+        LOG.error("auth: " + authorization);
+
         if (authorization != null && authorization.startsWith("Basic")) {
             String base64Credentials = authorization.substring("Basic".length()).trim();
             String credentials = new String(Base64.getDecoder().decode(base64Credentials),
@@ -58,6 +61,15 @@ public class AdyenNotificationAuthenticationProvider {
 
         Assert.notNull(notificationUsername);
         Assert.notNull(notificationPassword);
+
+
+        LOG.error("notificationUsername: " + notificationUsername);
+        LOG.error("notificationPassword" + notificationPassword);
+
+        LOG.error("name: " + name);
+        LOG.error("password: " + password);
+
+
 
         if (notificationUsername.isEmpty() || notificationPassword.isEmpty()) {
             return false;
